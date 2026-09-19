@@ -21,9 +21,11 @@ export default function App() {
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = 'dark';
       localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
       localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
@@ -32,10 +34,10 @@ export default function App() {
     <div
       id="portfolio-root"
       className={`min-h-screen relative transition-colors duration-300 ${
-        darkMode ? 'bg-neutral-950 text-neutral-100' : 'bg-slate-50 text-neutral-900'
+        darkMode ? 'dark bg-neutral-950 text-neutral-100' : 'bg-slate-50 text-neutral-900'
       }`}
     >
-      {/* Dynamic Fluid Streamlines Canvas Background */}
+      {/* Dynamic Interactive Fluid Canvas Background */}
       <FlowBackground darkMode={darkMode} />
 
       {/* Floating Navigation Bar */}
@@ -52,7 +54,9 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }
